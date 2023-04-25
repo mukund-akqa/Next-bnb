@@ -46,7 +46,8 @@ function Header({placeholder}) {
     <header className="sticky top-0 z-50 grid grid-cols-3 shadow-md p-5 md:px-10 bg-white">
       {/* left */}
       <div className="relative flex items-center my-auto cursor-pointer " onClick={() => router.push('/')}>
-        <Image src="https://links.papareact.com/qd3" width={150} height={40} />
+        {/* <Image src="https://links.papareact.com/qd3" width={150} height={40} /> */}
+        <h1 className="text-red-300 text-xl">NEXT-BNB</h1>
       </div>
       {/* Middle */}
       <div className="flex items-center md:border-2 rounded-full">

@@ -6,13 +6,10 @@ import Header from "../components/Header";
 import InfoCard from "../components/InfoCard";
 import MapBox from "../components/MapBox";
 
-
 function search({ searchResults }) {
   const router = useRouter();
   const { location, startDate, endDate, noOfGuests } = router.query;
-  // const formattedStartDate= format(new Date(startDate),'dd MMMM yy');
-  // const formattedEndDate= format(new Date(endDate),'dd MMMM yy');
-  // const range = `${formattedStartDate} - ${formattedEndDate}`
+
   console.log(searchResults);
   return (
     <div>
@@ -30,12 +27,22 @@ function search({ searchResults }) {
             <p className="button">Rooms And Beds</p>
             <p className="button">More Filters</p>
           </div>
-          {searchResults.map((item)=>(
-            <InfoCard description={item.description} img={item.img} lat={item.lat} long={item.long} location={item.location} price={item.price} title={item.title} total={item.total} star={item.star}/>
+          {searchResults.map((item) => (
+            <InfoCard
+              description={item.description}
+              img={item.img}
+              lat={item.lat}
+              long={item.long}
+              location={item.location}
+              price={item.price}
+              title={item.title}
+              total={item.total}
+              star={item.star}
+            />
           ))}
         </section>
         <section className="hidden xl:inline-flex xl:min-w-[400px] 2xl:min-w-[755px]">
-            <MapBox searchResults={searchResults}/>
+          <MapBox searchResults={searchResults} />
         </section>
       </main>
       <Footer />
@@ -49,6 +56,7 @@ export async function getServerSideProps() {
   const searchResults = await fetch("https://www.jsonkeeper.com/b/5NPS").then(
     (res) => res.json()
   );
+
   return {
     props: {
       searchResults,
